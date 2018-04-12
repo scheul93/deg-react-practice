@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.label {
+    color: #695e4a;
+    display: block;
+    font-size: 1.0625em;
+    margin-bottom: .5em;
+}
+
+.input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: .75em;
+    width: 100%;
+}
+
+.field {
+    max-width: 40em;
+    width: 100%;
+}
+
+.button {
+    background-color: #5ab44b;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    font-size: 1.125em;
+    height: 2em;
+    padding: .25em .75em;
+    transition: background-color .35s ease;
+}
+
+.button:disabled {
+    background-color: #aaa;
+    cursor: default;
+    opacity: .8;
+}
+
