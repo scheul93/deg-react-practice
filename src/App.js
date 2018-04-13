@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from './components/Search/Search';
+import DistanceFilter from './components/DistanceFilter/DistanceFilter';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
         value: ""
       },
       distance: {
-        value: ""
+        value: "5"
       },
       gender: {
         value: ""
@@ -25,6 +26,7 @@ class App extends Component {
           <h1 className="App-title">HEADER</h1>
         </header>
         <Search zipCode={this.state.zipCode} />
+        <DistanceFilter distance={this.state.distance} />
       </div>
     );
   }
