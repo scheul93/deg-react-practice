@@ -40,7 +40,6 @@ class App extends Component {
 	}
 
 	onZipCodeChange(zipCode) {
-		console.log("zip code changed");
 		this.setState({
 			zipCode: {
 				value: zipCode
@@ -54,9 +53,17 @@ class App extends Component {
 				<header className="App-header" >
 					<h1 className="App-title" > HEADER </h1> 
 				</header>
-				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} /> 
-				<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value}/>
-				<GenderFilter onGenderChange={this.onGenderChange.bind(this)}/>
+				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
+				<div className="columns">
+					<div className="column--secondary">
+						<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value}/>
+						<GenderFilter onGenderChange={this.onGenderChange.bind(this)}/>
+					</div>
+					<div className="column--primary">
+						Results
+					</div>
+				</div>
+				
 			</div>
 		);
 	}

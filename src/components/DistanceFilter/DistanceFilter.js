@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './DistanceFilter.css';
+import './DistanceFilter.css';
 
 class DistanceFilter extends Component {
 
@@ -16,7 +16,7 @@ class DistanceFilter extends Component {
 
     render() {
         return (
-            <div>
+            <div className="distance-filter">
                 <ZipCodeField onInputChange={this.onInputChange.bind(this)} milesVal={this.state.inputValue} />
                 <ZipCodeDescription milesVal={this.state.inputValue} zipCode={this.props.zipCode} />
             </div>
