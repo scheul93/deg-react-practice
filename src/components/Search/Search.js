@@ -18,7 +18,7 @@ class Search extends Component {
         return (
             <div className="search-box">
                 <ZipCodeField zipCode={this.state.inputValue} onInputChange={this.onInputChange.bind(this)} />
-                <Button isDisabled={!this.state.inputValue}/>
+                <Button isDisabled={!this.state.inputValue} />
             </div>
         )
     }
@@ -33,6 +33,6 @@ const ZipCodeField = props => {
     )
 }
 
-const Button = props => <button className="button" disabled={props.isDisabled}>Search</button>
+const Button = props => <button className="button" disabled={props.isDisabled} >Search</button>
 
 export default Search;
