@@ -18,7 +18,7 @@ class DistanceFilter extends Component {
         return (
             <div>
                 <ZipCodeField onInputChange={this.onInputChange.bind(this)} milesVal={this.state.inputValue} />
-                <ZipCodeDescription milesVal={this.state.inputValue}/>
+                <ZipCodeDescription milesVal={this.state.inputValue} zipCode={this.props.zipCode} />
             </div>
         )
     }
