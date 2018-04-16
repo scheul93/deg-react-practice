@@ -13,7 +13,7 @@ describe('Search', () => {
 
     beforeEach(() => {
         component = renderIntoDocument(
-            <Search zipCode={{value: ""}} />
+            <Search zipCode="" />
         );
     })
     it('renders a field', () => {
