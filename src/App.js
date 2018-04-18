@@ -14,29 +14,20 @@ class App extends Component {
 				value: ""
 			},
 			distance: {
-				value: "5"
+				value: 30
 			},
 			gender: {
-				value: []
+				value: "all"
 			}
 		}
 	}
 
 	onGenderChange(e) {
-		if (e.target.checked) {
-			this.setState({
-				gender: {
-					value: [e.target.value, ...this.state.gender.value]
-				}
-			})
-		} else {
-			const newVal = this.state.gender.value.filter(item => item !== e.target.value);
-			this.setState({
-				gender: {
-					value: newVal
-				}
-			})
-		}
+		this.setState({
+			gender: {
+				value: e.target.value
+			}
+		})
 	}
 
 	onZipCodeChange(zipCode) {
@@ -64,14 +55,13 @@ class App extends Component {
 				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
 				<div className="columns">
 					<div className="column--secondary">
-						<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value} onDistanceChange={this.onDistanceChange.bind(this)} />
-						<GenderFilter onGenderChange={this.onGenderChange.bind(this)}/>
+				<DistanceFilter distance={this.state.distance} />
+				<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
 					</div>
 					<div className="column--primary">
 						Results
 					</div>
 				</div>
-				
 			</div>
 		);
 	}
