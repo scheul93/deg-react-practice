@@ -11,34 +11,34 @@ class GenderFilter extends Component {
                 <label htmlFor="distance" className="label label--alt">Gender</label>
                 <ul className="field-group">
                     <li className="field-group__list-item">
-                        <input className="input input--checkbox" 
+                        <input className="input input--radio" 
                             id="gender__female" 
                             name="gender" 
-                            type="checkbox" 
+                            type="radio" 
                             value="female"
                             onChange={this.props.onGenderChange}
                         />
                         <label className="label label--inline" htmlFor="gender__female">Female</label>
                     </li>
                     <li className="field-group__list-item">
-                        <input className="input input--checkbox" 
+                        <input className="input input--radio" 
                             id="gender__male" 
                             name="gender" 
-                            type="checkbox" 
+                            type="radio" 
                             value="male"
                             onChange={this.props.onGenderChange}
                         />
                         <label className="label label--inline" htmlFor="gender__male">Male</label>
                     </li>
                     <li className="field-group__list-item">
-                        <input className="input input--checkbox" 
-                            id="gender__other" 
+                        <input className="input input--radio" 
+                            id="gender__all" 
                             name="gender" 
-                            type="checkbox" 
-                            value="other"
+                            type="radio" 
+                            value="all"
                             onChange={this.props.onGenderChange} 
                         />
-                        <label className="label label--inline" htmlFor="gender__other">Other</label>
+                        <label className="label label--inline" htmlFor="gender__all">No Preference</label>
                     </li>
                 </ul>
             </div>

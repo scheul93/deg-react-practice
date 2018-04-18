@@ -17,7 +17,7 @@ class App extends Component {
 				value: "5"
 			},
 			gender: {
-				value: []
+				value: "all"
 			}
 		}
 	}
@@ -26,7 +26,7 @@ class App extends Component {
 		if (e.target.checked) {
 			this.setState({
 				gender: {
-					value: [e.target.value, ...this.state.gender.value]
+				value: e.target.value
 				}
 			})
 		} else {

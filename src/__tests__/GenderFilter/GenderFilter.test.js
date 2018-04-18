@@ -36,11 +36,7 @@ describe('GenderFilter', () => {
         expect(labels[0].textContent).toBe('Gender');
         expect(labels[1].textContent).toBe('Female');
         expect(labels[2].textContent).toBe('Male');
-        expect(labels[3].textContent).toBe('Other');
-    })
-
-    xit('should autofill checkboxes if given initial vlaue', () => {
-
+        expect(labels[3].textContent).toBe('No Preference');
     })
 
     xit('should update search when any checkbox state is toggled', () => {
