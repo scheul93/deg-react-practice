@@ -47,6 +47,15 @@ class App extends Component {
 		})
 	}
 
+	onDistanceChange(e) {
+		console.log("distance changing");
+		this.setState({
+			distance: {
+				value: e.target.value
+			}
+		})
+	}
+
 	render() {
 		return ( 
 			<div className="App" >
@@ -56,7 +65,7 @@ class App extends Component {
 				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
 				<div className="columns">
 					<div className="column--secondary">
-						<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value}/>
+						<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value} onDistanceChange={this.onDistanceChange.bind(this)} />
 						<GenderFilter onGenderChange={this.onGenderChange.bind(this)}/>
 					</div>
 					<div className="column--primary">
