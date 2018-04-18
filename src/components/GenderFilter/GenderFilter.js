@@ -17,6 +17,7 @@ class GenderFilter extends Component {
                             type="radio" 
                             value="female"
                             onChange={this.props.onGenderChange}
+                            checked={this.props.currentGender === 'female'}
                         />
                         <label className="label label--inline" htmlFor="gender__female">Female</label>
                     </li>
@@ -27,6 +28,7 @@ class GenderFilter extends Component {
                             type="radio" 
                             value="male"
                             onChange={this.props.onGenderChange}
+                            checked={this.props.currentGender === 'male'}
                         />
                         <label className="label label--inline" htmlFor="gender__male">Male</label>
                     </li>
@@ -36,7 +38,8 @@ class GenderFilter extends Component {
                             name="gender" 
                             type="radio" 
                             value="all"
-                            onChange={this.props.onGenderChange} 
+                            onChange={this.props.onGenderChange}
+                            checked={this.props.currentGender === 'all'}
                         />
                         <label className="label label--inline" htmlFor="gender__all">No Preference</label>
                     </li>

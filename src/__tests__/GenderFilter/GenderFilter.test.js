@@ -10,11 +10,12 @@ import {
 import GenderFilter from '../../components/GenderFilter/GenderFilter';
 
 describe('GenderFilter', () => {
-    let component; 
+    let component;
+    const onGenderChange = jest.fn();
 
     beforeEach(() => {
         component = renderIntoDocument(
-            <GenderFilter zipCode={{value: ""}} />
+            <GenderFilter onGenderChange={onGenderChange} currentGender="all"/>
         );
     })
 
@@ -39,7 +40,15 @@ describe('GenderFilter', () => {
         expect(labels[3].textContent).toBe('No Preference');
     })
 
-    xit('should update search when any checkbox state is toggled', () => {
+    it('should default to No Preference', () => {
+        const inputs = scryRenderedDOMComponentsWithClass(component, 'input');
+        expect(inputs[2].checked).toBeTruthy();
+    })
 
+    it('should trigger callback when input changes', () => {
+        const inputs = scryRenderedDOMComponentsWithClass(component, 'input');
+        Simulate.change(inputs[0], {target: {value: 'female'}});
+
+        expect(onGenderChange).toHaveBeenCalled();
     })
 })
