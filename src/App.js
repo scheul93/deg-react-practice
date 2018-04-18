@@ -48,7 +48,6 @@ class App extends Component {
 	}
 
 	onDistanceChange(e) {
-		console.log("distance changing");
 		this.setState({
 			distance: {
 				value: e.target.value
