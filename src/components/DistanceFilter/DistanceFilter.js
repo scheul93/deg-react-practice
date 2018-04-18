@@ -5,26 +5,19 @@ class DistanceFilter extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            inputValue: this.props.distance.value
-        }
-    }
-
-    onInputChange(e) {
-        this.setState({inputValue: e.target.value});
     }
 
     render() {
         return (
             <div>
-                <ZipCodeField onInputChange={this.onInputChange.bind(this)} milesVal={this.state.inputValue} />
-                <ZipCodeDescription milesVal={this.state.inputValue}/>
+                <DistanceField onInputChange={this.props.onDistanceChange} milesVal={this.props.distance.value} /> 
+                <DistanceDescription milesVal={this.props.distance.value} />
             </div>
         )
     }
 }
 
-function ZipCodeField(props) {
+function DistanceField(props) {
     return (
         <div className="field">
             <label htmlFor="distance" className="label label--alt">Distance</label>
@@ -51,7 +44,7 @@ function ZipCodeField(props) {
     )
 }
 
-function ZipCodeDescription(props) {
+function DistanceDescription(props) {
     return (
         <div className="distance__description">
             Current: {props.milesVal > 25 ? 'All' : props.milesVal} Miles from {props.zipCode || '66211'}

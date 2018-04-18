@@ -9,11 +9,16 @@ import {
 import DistanceFilter from '../../components/DistanceFilter/DistanceFilter';
 
 describe('Search', () => {
-    let component; 
+    let component;
+    const onDistanceChanged = jest.fn((e) => { 
+        component = renderIntoDocument( 
+            <DistanceFilter distance={{value: e.target.value}} zipCode="66211" onDistanceChange={onDistanceChanged}/> 
+        ); 
+    }); 
 
     beforeEach(() => {
         component = renderIntoDocument(
-            <DistanceFilter distance={{value: 5}}/>
+            <DistanceFilter distance={{value: 5}} onDistanceChange={onDistanceChanged}/>
         );
     })
     it('renders a slider field', () => {
@@ -36,36 +41,33 @@ describe('Search', () => {
         expect(description.textContent).toEqual('Current: 5 Miles from 66211');
     })
 
-    it('updates state on input change', () => {
+    it('triggers callback on input change', () => {
         const input = findRenderedDOMComponentWithTag(component, 'input');
 
         Simulate.change(input, {target: {value: "10"}});
-        expect(component.state.inputValue).toEqual('10');
-        expect(input.value).toEqual('10');
+        expect(onDistanceChanged).toHaveBeenCalled();
     })
 
     it('description updates on input change', () => {
         const input = findRenderedDOMComponentWithTag(component, 'input');
-        const description = findRenderedDOMComponentWithClass(component, 'distance__description');
+        let description = findRenderedDOMComponentWithClass(component, 'distance__description');
         expect(description).toBeDefined();
         expect(description.textContent).toEqual('Current: 5 Miles from 66211');
 
         Simulate.change(input, {target: {value: "10"}});
+        description = findRenderedDOMComponentWithClass(component, 'distance__description');
         expect(description.textContent).toEqual('Current: 10 Miles from 66211');
     })
 
     it('should display "All" for any number over 25"', () => {
         const input = findRenderedDOMComponentWithTag(component, 'input');
-        const description = findRenderedDOMComponentWithClass(component, 'distance__description');
+        let description = findRenderedDOMComponentWithClass(component, 'distance__description');
         expect(description).toBeDefined();
         expect(description.textContent).toEqual('Current: 5 Miles from 66211');
 
         Simulate.change(input, {target: {value: "100"}});
+        description = findRenderedDOMComponentWithClass(component, 'distance__description');
         expect(description.textContent).toEqual('Current: All Miles from 66211');
-    })
-
-    xit('should use default zip code at start', () => {
-
     })
 
     xit('should update zip code if it changes', () => {
