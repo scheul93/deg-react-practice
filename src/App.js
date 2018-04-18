@@ -10,7 +10,7 @@ class App extends Component {
         value: ""
       },
       distance: {
-        value: ""
+        value: 5
       },
       gender: {
         value: ""
