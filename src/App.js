@@ -55,7 +55,7 @@ class App extends Component {
 				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
 				<div className="columns">
 					<div className="column--secondary">
-				<DistanceFilter distance={this.state.distance} />
+				<DistanceFilter distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/>
 				<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
 					</div>
 					<div className="column--primary">
