@@ -6,7 +6,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: this.props.value
+            inputValue: this.props.zipCode.value
         }
     }
 
