@@ -42,7 +42,7 @@ function DistanceField(props) {
                 <option value="15" label="15" />
                 <option value="20" label="20" />
                 <option value="25" label="25" />
-                <option value="30" label="All" />
+                <option value="" label="All" />
             </datalist>
         </div>
     )
@@ -51,7 +51,7 @@ function DistanceField(props) {
 function DistanceDescription(props) {
     return (
         <div className="distance__description">
-            Current: {props.milesVal > 25 ? 'All' : props.milesVal} Miles from {props.zipCode || '66211'}
+            Current: {props.milesVal ? props.milesVal : 'All'} Miles from {props.zipCode || '66211'}
         </div>
     )
 }

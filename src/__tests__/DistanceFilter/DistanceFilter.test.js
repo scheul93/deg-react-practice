@@ -65,7 +65,7 @@ describe('Search', () => {
         expect(description).toBeDefined();
         expect(description.textContent).toEqual('Current: 5 Miles from 66211');
 
-        Simulate.change(input, {target: {value: "100"}});
+        Simulate.change(input, {target: {value: ""}});
         description = findRenderedDOMComponentWithClass(component, 'distance__description');
         expect(description.textContent).toEqual('Current: All Miles from 66211');
     })
