@@ -7,10 +7,14 @@ class DistanceFilter extends Component {
         super(props);
     }
 
+    onInputChange(e) {
+        this.props.onDistanceChange(Number(e.target.value));
+    }
+
     render() {
         return (
             <div>
-                <DistanceField onInputChange={this.props.onDistanceChange} milesVal={this.props.distance.value} /> 
+                <DistanceField onInputChange={this.onInputChange.bind(this)} milesVal={this.props.distance.value} /> 
                 <DistanceDescription milesVal={this.props.distance.value} />
             </div>
         )

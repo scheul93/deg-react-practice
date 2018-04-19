@@ -10,9 +10,9 @@ import DistanceFilter from '../../components/DistanceFilter/DistanceFilter';
 
 describe('Search', () => {
     let component;
-    const onDistanceChanged = jest.fn((e) => { 
+    const onDistanceChanged = jest.fn(newVal => { 
         component = renderIntoDocument( 
-            <DistanceFilter distance={{value: e.target.value}} zipCode="66211" onDistanceChange={onDistanceChanged}/> 
+            <DistanceFilter distance={{value: newVal}} zipCode="66211" onDistanceChange={onDistanceChanged}/> 
         ); 
     }); 
 

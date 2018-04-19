@@ -21,10 +21,10 @@ class App extends Component {
 		}
 	}
 
-	onDistanceChange(e) {
+	onDistanceChange(newDistanceVal) {
 		this.setState({
 			distance: {
-				value: e.target.value
+				value: newDistanceVal
 			}
 		})
 	}
