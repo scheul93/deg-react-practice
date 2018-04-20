@@ -9,6 +9,11 @@ body {
     margin-bottom: .5em;
 }
 
+.label--alt {
+    color: #006595;
+    font-size: 1.25em;
+}
+
 .input {
     border: 1px solid #ccc;
     border-radius: 5px;
