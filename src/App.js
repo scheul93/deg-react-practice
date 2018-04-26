@@ -22,6 +22,13 @@ class App extends Component {
 		}
 	}
 
+	onDistanceChange(newDistanceVal) {
+		this.setState({
+			distance: {
+				value: newDistanceVal
+			}
+		})
+	}
 	onGenderChange(e) {
 		this.setState({
 			gender: {
