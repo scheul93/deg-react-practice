@@ -79,8 +79,16 @@ describe('Search', () => {
         expect(description.textContent).toEqual('Current: All Miles from 66211');
     })
 
-    xit('should update zip code if it changes', () => {
-        
+    it('should update zip code if it changes', () => {
+        let description = findRenderedDOMComponentWithClass(component, 'distance__description');
+        expect(description).toBeDefined();
+        expect(description.textContent).toEqual('Current: 5 Miles from 66211');
+
+        component = renderIntoDocument(
+            <DistanceFilter distance={{value: "5"}} zipCode="66213" onDistanceChange={onDistanceChanged}/>
+        );
+        description = findRenderedDOMComponentWithClass(component, 'distance__description');
+        expect(description.textContent).toEqual('Current: 5 Miles from 66213');
     })
 
 })

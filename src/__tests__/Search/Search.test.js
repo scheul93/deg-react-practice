@@ -10,10 +10,11 @@ import Search from '../../components/Search/Search';
 
 describe('Search', () => {
     let component; 
+    const onSearch = jest.fn();
 
     beforeEach(() => {
         component = renderIntoDocument(
-            <Search zipCode={{value: ""}} />
+            <Search zipCode={{value:""}} onSearch={onSearch} />
         );
     })
     it('renders a field', () => {
@@ -56,7 +57,11 @@ describe('Search', () => {
         expect(button.disabled).toEqual(false);
     })
 
-    xit('should trigger search on button click', () => {
-
+    it('should trigger search on button click', () => {
+        const input = findRenderedDOMComponentWithTag(component, 'input');
+        const button = findRenderedDOMComponentWithTag(component, 'button');
+        Simulate.change(input, {target: {value: 'test'}});
+        Simulate.click(button);
+        expect(onSearch).toHaveBeenCalled();
     });
 })

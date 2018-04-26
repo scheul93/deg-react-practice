@@ -37,15 +37,38 @@ class App extends Component {
 		})
 	}
 
+	onZipCodeChange(zipCode) {
+		this.setState({
+			zipCode: {
+				value: zipCode
+			}
+		})
+	}
+
+	onDistanceChange(e) {
+		this.setState({
+			distance: {
+				value: e.target.value
+			}
+		})
+	}
+
 	render() {
 		return ( 
 			<div className="App" >
 				<header className="App-header" >
 					<h1 className="App-title" > HEADER </h1> 
 				</header>
-				<Search zipCode={this.state.zipCode}/> 
-				<DistanceFilter distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)} />
+				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
+				<div className="columns">
+					<div className="column--secondary">
+				<DistanceFilter distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/>
 				<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
+					</div>
+					<div className="column--primary">
+						Results
+					</div>
+				</div>
 			</div>
 		);
 	}

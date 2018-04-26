@@ -58,3 +58,17 @@ body {
     opacity: .8;
 }
 
+.columns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3em;
+}
+
+.column--secondary {
+    margin-right: 5em;
+    width: 15%;
+}
+
+.column--primary {
+    width: 85%;
+}

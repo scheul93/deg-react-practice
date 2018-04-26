@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './DistanceFilter.css';
+import './DistanceFilter.css';
 
 class DistanceFilter extends Component {
 
@@ -33,7 +33,6 @@ function DistanceField(props) {
                 min="5"
                 max="30"
                 step="5"
-                onChange={props.onInputChange}
                 value={props.milesVal}
                 disabled={!props.zipCode}
             />
