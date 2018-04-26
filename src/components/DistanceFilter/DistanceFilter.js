@@ -14,8 +14,8 @@ class DistanceFilter extends Component {
     render() {
         return (
             <div>
-                <DistanceField onInputChange={this.onInputChange.bind(this)} milesVal={this.props.distance.value} /> 
-                <DistanceDescription milesVal={this.props.distance.value} />
+                <DistanceField onInputChange={this.onInputChange.bind(this)} milesVal={this.props.distance.value} zipCode={this.props.zipCode}/> 
+                <DistanceDescription milesVal={this.props.distance.value} zipCode={this.props.zipCode} />
             </div>
         )
     }
@@ -35,6 +35,7 @@ function DistanceField(props) {
                 step="5"
                 onChange={props.onInputChange}
                 value={props.milesVal}
+                disabled={!props.zipCode}
             />
             <datalist id="tickmarks">
                 <option value="5" label="5" />
@@ -51,7 +52,7 @@ function DistanceField(props) {
 function DistanceDescription(props) {
     return (
         <div className="distance__description">
-            Current: {props.milesVal ? props.milesVal : 'All'} Miles from {props.zipCode || '66211'}
+            Current: {props.milesVal ? props.milesVal : 'All'} Miles from {props.zipCode}
         </div>
     )
 }

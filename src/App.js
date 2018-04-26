@@ -44,7 +44,7 @@ class App extends Component {
 					<h1 className="App-title" > HEADER </h1> 
 				</header>
 				<Search zipCode={this.state.zipCode}/> 
-				<DistanceFilter distance={this.state.distance} />
+				<DistanceFilter distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)} />
 				<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
 			</div>
 		);

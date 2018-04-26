@@ -18,9 +18,10 @@ describe('Search', () => {
 
     beforeEach(() => {
         component = renderIntoDocument(
-            <DistanceFilter distance={{value: 5}} onDistanceChange={onDistanceChanged}/>
+            <DistanceFilter distance={{value: 5}} zipCode="66211" onDistanceChange={onDistanceChanged}/>
         );
     })
+
     it('renders a slider field', () => {
         const field = findRenderedDOMComponentWithClass(component, 'field');
         expect(field).toBeDefined();
@@ -33,6 +34,14 @@ describe('Search', () => {
     
         expect(input).toBeDefined();
         expect(input.type).toBe('range');
+    })
+
+    it('disables slider if no zipcode', () => {
+        component = renderIntoDocument(
+            <DistanceFilter distance={{value: 5}} onDistanceChange={onDistanceChanged}/>
+        );
+        const input = findRenderedDOMComponentWithTag(component, 'input');
+        expect(input.disabled).toBe(true);
     })
 
     it('renders a description', () => {
