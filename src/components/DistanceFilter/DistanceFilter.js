@@ -35,6 +35,7 @@ function DistanceField(props) {
                 step="5"
                 value={props.milesVal}
                 disabled={!props.zipCode}
+                onChange={props.onInputChange}
             />
             <datalist id="tickmarks">
                 <option value="5" label="5" />
