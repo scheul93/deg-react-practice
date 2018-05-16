@@ -4,6 +4,7 @@ import React, {
 import Search from './components/Search/Search';
 import DistanceFilter from './components/DistanceFilter/DistanceFilter';
 import GenderFilter from './components/GenderFilter/GenderFilter';
+import Results from './components/Results/Results';
 import './App.css';
 
 class App extends Component {
@@ -54,11 +55,11 @@ class App extends Component {
 				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
 				<div className="columns">
 					<div className="column--secondary">
-				<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value} onDistanceChange={this.onDistanceChange.bind(this)}/>
-				<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
+						<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value} onDistanceChange={this.onDistanceChange.bind(this)}/>
+						<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
 					</div>
 					<div className="column--primary">
-						Results
+						<Results {...this.state} />
 					</div>
 				</div>
 			</div>

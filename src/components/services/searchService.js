@@ -3,14 +3,14 @@ import data from '../../assets/doctors';
 let doctorData;
 
 function loadDoctorData() {
-    return data;
+    return data.results;
 }
 
 function matchesGender(doctor, genderVal) {
     if (genderVal === 'all') {
         return true;
     }
-    return doctor.gender.toLowerCase() === genderVal;
+    return doctor.gender && doctor.gender.toLowerCase() === genderVal;
 }
 
 function matchesDistance(doctor, distanceVal) {
@@ -23,7 +23,7 @@ function matchesDistance(doctor, distanceVal) {
 
 function search(props) {
     if (!doctorData) {
-        loadDoctorData();
+        doctorData = loadDoctorData();
     }
     return doctorData.filter(doctor => {
         return matchesGender(doctor, props.gender.value) && matchesDistance(doctor, props.distance.value);

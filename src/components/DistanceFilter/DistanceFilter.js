@@ -52,7 +52,7 @@ function DistanceField(props) {
 function DistanceDescription(props) {
     return (
         <div className="distance__description">
-            Current: {props.milesVal ? props.milesVal : 'All'} Miles from {props.zipCode}
+            Current: {(props.milesVal && props.milesVal < 30) ? props.milesVal : 'All'} Miles from {props.zipCode}
         </div>
     )
 }
