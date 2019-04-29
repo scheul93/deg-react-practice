@@ -18,9 +18,10 @@ describe('Search', () => {
 
     beforeEach(() => {
         component = renderIntoDocument(
-            <DistanceFilter distance={{value: 5}} onDistanceChange={onDistanceChanged}/>
+            <DistanceFilter distance={{value: 5}} zipCode="66211" onDistanceChange={onDistanceChanged}/>
         );
     })
+
     it('renders a slider field', () => {
         const field = findRenderedDOMComponentWithClass(component, 'field');
         expect(field).toBeDefined();
@@ -33,6 +34,14 @@ describe('Search', () => {
     
         expect(input).toBeDefined();
         expect(input.type).toBe('range');
+    })
+
+    it('disables slider if no zipcode', () => {
+        component = renderIntoDocument(
+            <DistanceFilter distance={{value: 5}} onDistanceChange={onDistanceChanged}/>
+        );
+        const input = findRenderedDOMComponentWithTag(component, 'input');
+        expect(input.disabled).toBe(true);
     })
 
     it('renders a description', () => {
@@ -70,8 +79,16 @@ describe('Search', () => {
         expect(description.textContent).toEqual('Current: All Miles from 66211');
     })
 
-    xit('should update zip code if it changes', () => {
-        
+    it('should update zip code if it changes', () => {
+        let description = findRenderedDOMComponentWithClass(component, 'distance__description');
+        expect(description).toBeDefined();
+        expect(description.textContent).toEqual('Current: 5 Miles from 66211');
+
+        component = renderIntoDocument(
+            <DistanceFilter distance={{value: "5"}} zipCode="66213" onDistanceChange={onDistanceChanged}/>
+        );
+        description = findRenderedDOMComponentWithClass(component, 'distance__description');
+        expect(description.textContent).toEqual('Current: 5 Miles from 66213');
     })
 
 })

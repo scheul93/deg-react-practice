@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import Search from './components/Search/Search';
 import DistanceFilter from './components/DistanceFilter/DistanceFilter';
+import GenderFilter from './components/GenderFilter/GenderFilter';
+import Results from './components/Results/Results';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +18,7 @@ class App extends Component {
 				value: 30
 			},
 			gender: {
-				value: ""
+				value: "all"
 			}
 		}
 	}
@@ -28,14 +30,38 @@ class App extends Component {
 			}
 		})
 	}
+	onGenderChange(e) {
+		this.setState({
+			gender: {
+				value: e.target.value
+			}
+		})
+	}
+
+	onZipCodeChange(zipCode) {
+		this.setState({
+			zipCode: {
+				value: zipCode
+			}
+		})
+	}
 
 	render() {
-		return ( <div className="App" >
-			<header className="App-header">
-				<h1 className="App-title">HEADER</h1> 
-			</header> 
-				<Search zipCode={this.state.zipCode}/> 
-				<DistanceFilter distance={this.state.distance} onDistanceChange={this.onDistanceChange.bind(this)}/>
+		return ( 
+			<div className="App" >
+				<header className="App-header" >
+					<h1 className="App-title" > HEADER </h1> 
+				</header>
+				<Search zipCode={this.state.zipCode} onSearch={this.onZipCodeChange.bind(this)} />
+				<div className="columns">
+					<div className="column--secondary">
+						<DistanceFilter distance={this.state.distance} zipCode={this.state.zipCode.value} onDistanceChange={this.onDistanceChange.bind(this)}/>
+						<GenderFilter onGenderChange={this.onGenderChange.bind(this)} currentGender={this.state.gender.value}/>
+					</div>
+					<div className="column--primary">
+						<Results {...this.state} />
+					</div>
+				</div>
 			</div>
 		);
 	}

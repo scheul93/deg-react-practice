@@ -14,11 +14,15 @@ class Search extends Component {
         this.setState({inputValue: e.target.value});
     }
 
+    onSearchBtnClicked() {
+        this.props.onSearch(this.state.inputValue);
+    }
+
     render() {
         return (
             <div className="search-box">
                 <ZipCodeField zipCode={this.state.inputValue} onInputChange={this.onInputChange.bind(this)} />
-                <Button isDisabled={!this.state.inputValue}/>
+                <Button isDisabled={!this.state.inputValue} onSearchBtnClicked={this.onSearchBtnClicked.bind(this)} />
             </div>
         )
     }
@@ -33,6 +37,6 @@ const ZipCodeField = props => {
     )
 }
 
-const Button = props => <button className="button" disabled={props.isDisabled}>Search</button>
+const Button = props => <button className="button" disabled={props.isDisabled} onClick={props.onSearchBtnClicked}>Search</button>
 
 export default Search;
